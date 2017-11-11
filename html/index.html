@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Iframe</title>
+</head>
+<body>
+  <h1>Iframe</h1>
+  <label>Adicionar texto no iframe</lable>
+  <input type="text" id="dados">
+  <button id="send">Enviar dados</button>
+  <iframe id="iframe" width="560" height="315" src="/iframe.html" frameborder="0" allowfullscreen onload=></iframe>
+
+  <script>
+    function initilize() {
+      const iframe = document.querySelector('iframe');
+      iframe.onload = function() {
+        const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+        const button = document.querySelector("#send");
+        button.addEventListener("click", () => {
+          const dados = document.querySelector("#dados").value;
+          innerDoc.body.innerHTML = dados;
+        })
+      }
+    }
+    initilize()
+  </script>
+</body>
+</html>
